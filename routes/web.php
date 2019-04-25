@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', 'HomeController@home');
+Route::resource('album', 'AlbumController');
+Route::resource('cart', 'CartController@show');
