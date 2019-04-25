@@ -82,4 +82,17 @@ class AlbumController extends Controller
     {
         //
     }
+
+    /**
+     * Provide get most viewed and best saled album list to home page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function home()
+    {
+        $sale = Album::getBestSale(3);
+        $view = Album::getMostView(3);
+
+        return view('home')->with('bestSale', $sale)->with('mostView', $view);
+    }
 }

@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', 'HomeController@home');
+// Route::get('/home', 'HomeController@home');
 Route::resource('album', 'AlbumController');
 Route::resource('cart', 'CartController@show');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'AlbumController@home');
+
