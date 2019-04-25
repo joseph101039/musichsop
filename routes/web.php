@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@home');
 Route::resource('album', 'AlbumController');
 Route::resource('cart', 'CartController@show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
