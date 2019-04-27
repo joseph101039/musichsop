@@ -21,4 +21,6 @@ Route::resource('cart', 'CartController@show');
 Auth::routes();
 
 Route::get('/home', 'AlbumController@home');
+Route::get('/browse', 'AlbumController@show');
+Route::get('/query', 'AlbumController@query');
 

@@ -44,9 +44,12 @@ class AlbumController extends Controller
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show()
     {
         //
+        $all_singer = Album::select('singer')->distinct()->get();
+
+        return view('browse', compact('all_singer'));
     }
 
     /**
@@ -90,9 +93,39 @@ class AlbumController extends Controller
      */
     public function home()
     {
-        $sale = Album::getBestSale(3);
-        $view = Album::getMostView(3);
+        $sale = Album::select('coverimg_file', 'album_name')->limit(3)->orderBy('salenum', 'desc')->get();
+        $view = Album::select('coverimg_file', 'album_name')->limit(3)->orderBy('viewnum', 'desc')->get();
 
         return view('home')->with('bestSale', $sale)->with('mostView', $view);
+    }
+
+    public function query()
+    {
+        
+        if(isset($_GET['singer']) && isset($_GET['rank']) &&  isset($_GET['newest']))
+        {
+            $queryObj = Album::select('id', 'coverimg_file', 'album_name', 'singer', 'release', 'price');
+
+            if($_GET['singer'] !== 'all'){
+                $queryObj = $queryObj->where('singer', $_GET['singer']);
+            }
+
+            if($_GET['rank'] != '0' && ($_GET['rank'] == '1' || $_GET['rank'] == '2')){
+                $queryObj = $queryObj->orderBy(($_GET['rank'] == '1')?'salenum':'viewnum', 'desc' );
+            }
+
+            $queryObj = $queryObj->orderBy('release', ($_GET['newest'] == '1')?'desc' : 'asc');
+
+            $albumList = $queryObj->get();
+        
+            //dd($albumList[0]['singer']);
+            if(count($albumList) == 0){
+                abort(404);
+            }
+
+            return view('browseList', compact('albumList'));
+        }
+        else
+            abort(403);
     }
 }

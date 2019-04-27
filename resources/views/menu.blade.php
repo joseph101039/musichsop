@@ -17,7 +17,7 @@
                 <a class="nav-link" href="/home">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Browse">BROWSE</a>
+                <a class="nav-link" href="/browse">BROWSE</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cart">CART</a>
