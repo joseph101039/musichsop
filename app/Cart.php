@@ -8,7 +8,7 @@ class Cart extends Model
 {
     //
     protected $fillable = [
-        'number',
+        'user_id', 'album_id', 'number',
     ];
     protected $table = 'cart';
 

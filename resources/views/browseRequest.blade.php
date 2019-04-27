@@ -25,7 +25,7 @@
         queryString = 'singer='+ singer + '&newest=' + newest + '&rank=' + rank;
 
         xmlhttp.open("GET","/query?"+queryString ,true);
-        xmlhttp.send(queryString);
+        xmlhttp.send();
     }
 
 
@@ -38,7 +38,7 @@
             // for IE5, IE6
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.open("GET", "modules/addToCart.php?id=" + id, true);
+        xmlhttp.open("GET", "/addToCart?id="+id, true);  
         xmlhttp.send();
     }
 

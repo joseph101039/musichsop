@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ Route::get('/', function () {
 
 // Route::get('/home', 'HomeController@home');
 Route::resource('album', 'AlbumController');
-Route::resource('cart', 'CartController@show');
+Route::resource('cart', 'CartController');
+Route::get('/addToCart', 'CartController@store');
 Auth::routes();
 
 Route::get('/home', 'AlbumController@home');

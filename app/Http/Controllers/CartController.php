@@ -33,9 +33,22 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
+
+        if(isset($_GET['id']))
+        {
+            $attributes = request()->validate([
+                'id' => ['required', 'Integer','min:1']
+            ]);
+            
+            Cart::firstOrCreate(
+                ['user_id' => auth()->id(), 'album_id' => $_GET['id']], 
+                ['number' => '1']
+            );
+        }
+
     }
 
     /**
@@ -47,6 +60,7 @@ class CartController extends Controller
     public function show(Cart $cart)
     {
         //
+        return view('cart');
     }
 
     /**
