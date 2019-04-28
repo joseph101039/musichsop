@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Album;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -15,6 +16,28 @@ class CartController extends Controller
     public function index()
     {
         //
+        $items = Cart::select('album_id', 'number')->where('user_id', auth()->id())->orderBy('created_at', 'asc')->get();
+        
+        $number = array();
+        $album_id = array();
+        // Gets a list of all the 2nd-level keys in the array
+        foreach($items as $item){
+            $album_id[] = $item['album_id'];
+            $number[] = $item['number'];   
+        }
+
+        $albumidStr = implode(',', $album_id);
+
+        $cartList = Album::select('id', 'coverimg_file', 'album_name', 'singer', 'release', 'price')->
+        whereIn('id', $album_id)->
+        orderByRaw(\DB::raw("FIELD(id, $albumidStr)"))->get();
+
+        $count = count($cartList);
+        for($i = 0; $i < $count; $i++){
+            $cartList[$i]['number'] = $number[$i];
+        }
+
+        return view('cart', compact('cartList'));
     }
 
     /**
