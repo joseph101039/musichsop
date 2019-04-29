@@ -35,15 +35,27 @@
         }
 
         li.nav-item {
-        float: left;
+          float: left;
         }
 
         li.right-nav-item {
           float: right;
-          background-color: #555;
+          background-color: gray;
         }
         li.auto{
+            float:none;
             margin-right:auto!important;
+        }
+
+        @media (max-width: 600px) 
+        {
+          ul.navbar {
+            display: flex;
+            flex-direction: column;
+          }
+         li.nav-item, li.right-nav-item {
+            display: block;
+          }
         }
 
         li a {
