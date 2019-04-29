@@ -24,7 +24,7 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        /* overflow: hidden; */
         background-color: #333;
  
         }
@@ -67,8 +67,57 @@
         text-decoration: none;
         }
 
+        /* number of items in cart */
+        .cart-quantity {
+          font-size: 15px;
+          background: #b30000;
+          color: #fff;
+          padding: 0 5px;
+          vertical-align: middle;
+
+          padding-left: 9px;
+          padding-right: 9px;
+          -webkit-border-radius: 9px;
+          -moz-border-radius: 9px;
+          border-radius: 9px;
+      }
+
         li a:hover {
         background-color: #111;
+        }
+
+    
+
+
+        #username{
+          position: relative;
+        }
+
+
+        #miniProfile{
+            display: none;
+            position: absolute;
+     
+            background-color:rgba(255, 240, 240,.6);;
+            width: 250px;
+            right:0px;
+            top: 52px;
+        }
+
+        #username:hover #miniProfile{
+            display: block;
+          position: absolute; 
+
+        }
+
+        .profile{
+          margin: 15px;
+          font-size: 18px;
+          color: black;
+          font-weight:bold;
+        }
+        .link-profile{
+          background-color:slategrey;
         }
 
        .browse-img{
@@ -176,7 +225,7 @@
           color:  #336699;
           font-weight: bold;
         }
-
+       
         @media (min-width: 600px) 
         {
           .rwd-tbcontainer td:before {
@@ -209,8 +258,8 @@
       </style>
     </head>
     <body>
+         @include('menu')
         <div class="container">
-            @include('menu')
             @yield('content')
         </div>
     </body>
