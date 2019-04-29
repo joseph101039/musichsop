@@ -35,10 +35,19 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
 
     public function carts()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function isAdmin()
+    {
+        if($this->is_admin == '1'){
+            return true;
+        }
+        return false;
     }
 }

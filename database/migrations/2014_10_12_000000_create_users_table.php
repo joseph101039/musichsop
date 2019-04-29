@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('gender');      // male: 0, female: 1
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('is_admin')->default(false);
         });
     }
 
