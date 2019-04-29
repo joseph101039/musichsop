@@ -30,3 +30,5 @@ Route::get('/home', 'AlbumController@home');
 Route::get('/browse', 'AlbumController@show');
 Route::get('/query', 'AlbumController@query');
 
+Route::get('/admin', 'HomeController@admin')->middleware('admin');
+
