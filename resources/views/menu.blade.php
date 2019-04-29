@@ -3,7 +3,10 @@
 
         <ul class="navbar">
         @guest
-        <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">HOME</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('login')}}">LOGIN</a>
             </li>
             <li class="nav-item">
