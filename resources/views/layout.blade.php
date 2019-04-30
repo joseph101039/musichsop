@@ -68,7 +68,7 @@
         }
 
         /* number of items in cart */
-        .cart-quantity {
+        .show-for-large {
           font-size: 15px;
           background: #b30000;
           color: #fff;
@@ -253,9 +253,14 @@
           max-width:60px;
         }
 
+        #check-sum{
+          text-align: center;
+        }
+
 
 
       </style>
+      <?php if(!session()->has('cart')){ session(['cart'=>[]]);}?>
     </head>
     <body>
          @include('menu')

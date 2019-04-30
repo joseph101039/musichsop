@@ -9,6 +9,12 @@
                 <a class="nav-link" href="/browse">BROWSE</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/cart">CART
+                <span id="cart-quantity" class="show-for-large filled">{{ count(session()->get('cart'))}}</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('login')}}">LOGIN</a>
             </li>
             <li class="nav-item">
@@ -25,7 +31,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cart">CART
-                <span class="cart-quantity show-for-large filled">2</span>
+                <span id="cart-quantity" class="show-for-large filled">{{ count(session()->get('cart'))}}</span>
                 </a>
             </li>
             
