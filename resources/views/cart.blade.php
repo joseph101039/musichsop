@@ -18,7 +18,7 @@
         @foreach($cartList as $key=>$album)
             @if($key !== "price_sum")
                 <tr class="cart-album">
-                    <td> {{ $key }} </td>
+                    <td> {{ $key + 1}} </td>
                     <td>
                         <span class="helper"></span>
                         <img src="{{ asset('images/'.$album['coverimg_file']) }}" class="cart-img">
@@ -46,8 +46,10 @@
 
         <h2> You have not added any items to cart.</h2>
     @else
-        <span><h3>Total price: $</h3></span><span><h3 id="price-sum">{{ $cartList['price_sum'] }}</h3></span>
+    <div id="check-sum">
+        <h3><span>Total price: $</span><span id="price-sum">{{ $cartList['price_sum'] }}</span></h3>
         <button type ="button" name="checkout" value="checkout"  onclick="checkout();">Checkout</button>
+    </div>
     @endif
 </div>
 
