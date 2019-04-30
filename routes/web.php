@@ -25,6 +25,20 @@ Route::get('/deleFromCart/{album_id}', 'CartController@destroy');
 Route::get('/checkout', 'CartController@checkout');
 Route::get('/', 'AlbumController@home');    //## workaround ##
 
+//Auth::routes();
+# orignial route for Auth::routes();
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+//Route::post('/logout', 'Auth\LoginController@logout');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+
+# change post login route
+Route::post('/login', 'Auth\LoginController@userLogin');
 
 Route::get('/home', 'AlbumController@home');
 Route::get('/browse', 'AlbumController@show');

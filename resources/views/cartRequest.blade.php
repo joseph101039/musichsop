@@ -55,16 +55,15 @@ function deleteCart(id){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             // If a item is deleted, fresh the page. Otherwise, alert users.
-            if(this.responseText ==='true'){
-                window.location.href=window.location.href;
+            if(this.responseText ==='false'){
+                alert("Server connection error! Cannot delete item!");
             }
             else{
-                alert("Server connection error! Cannot delete item!");
+                document.getElementById("cart-quantity").innerHTML = this.responseText;
+                window.location.href=window.location.href;
             }
         }
     }
-
-
     xmlhttp.open("GET", "/deleFromCart/"+ id , true);
     xmlhttp.send();
    
