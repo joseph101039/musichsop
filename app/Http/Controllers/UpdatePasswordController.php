@@ -37,8 +37,8 @@ class UpdatePasswordController extends Controller
         }
 
         $validatedData = $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|string|min:6|confirmed',
+            'current_password' => 'required|string|min:8',
+            'new_password' => 'required|string|min:8|confirmed',
         ]);
    
         //Change Password
