@@ -32,3 +32,6 @@ Route::get('/query', 'AlbumController@query');
 
 Route::get('/admin', 'HomeController@admin')->middleware('admin');
 
+Route::get('/changePassword','UpdatePasswordController@showChangePasswordForm');
+Route::post('/changePassword','UpdatePasswordController@changePassword')->name('changePassword');
+
