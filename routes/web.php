@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/home', 'HomeController@home');
 Route::resource('album', 'AlbumController');
 Route::resource('cart', 'CartController');
 Route::get('/cart/{album_id}/{number}', 'CartController@update');
-Route::get('/addToCart', 'CartController@store');
+Route::get('/addToCart/{album_id}', 'CartController@store');
 Route::get('/deleFromCart/{album_id}', 'CartController@destroy');
 Route::get('/checkout', 'CartController@checkout');
 Route::get('/', 'AlbumController@home');    //## workaround ##
-Auth::routes();
+
 
 Route::get('/home', 'AlbumController@home');
 Route::get('/browse', 'AlbumController@show');

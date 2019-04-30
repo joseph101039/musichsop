@@ -38,7 +38,15 @@
             // for IE5, IE6
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.open("GET", "/addToCart?id="+id, true);  
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("cart-quantity").innerHTML = this.responseText;
+            }
+        }
+
+
+        xmlhttp.open("GET", "/addToCart/"+id, true);  
         xmlhttp.send();
     }
 
