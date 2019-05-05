@@ -22,6 +22,9 @@
         <!-- Login, Register and change password page -->
         <link href="{{ asset('css/form.css') }}" rel="stylesheet">
         <style>
+            .container{
+                padding-top: 1.5rem!important;
+            }
 
       </style>
       <?php if(!session()->has('cart')){ session(['cart'=>[]]);}?>

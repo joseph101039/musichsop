@@ -69,7 +69,7 @@
                                         <input id="gender" type="radio" name="gender" value="0" required>
                                         <label for="gender-male" class="ol-md-2 col-form-label text-md-right">{{__('Male')}}</label>
                                     </div>
-                                    <div style="display:inline-block;" class="col-md-4">
+                                    <div style="display:inline-block;" class="col-md-5">
                                         <input id="gender" type="radio" name="gender" value="1">
                                          <label for="gender-female" class="ol-md-2 col-form-label text-md-right">{{__('Female')}}</label>
                                     </div>

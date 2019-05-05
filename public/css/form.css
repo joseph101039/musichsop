@@ -1,6 +1,9 @@
 /* login, register and change password page  */
 .row{
-    display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px
+    display:flex;
+    flex-wrap:wrap;
+    margin-right:-15px;
+    margin-left:-15px
   }
   
   .justify-content-center{
@@ -121,13 +124,30 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem
+    border: 0px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);   /* override  */
   }
   
   .card-columns .card {
     margin-bottom: .75rem
   }
+  
+  .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+    }
+
+    .card-header+.list-group .list-group-item:first-child {
+    border-top: 0
+    }
+
   
   @media (min-width:576px) {
     .card-columns {
@@ -142,7 +162,11 @@
         display: inline-block;
         width: 100%
     }
+
+    
   }
+
+
   
   .card-body {
     flex: 1 1 auto;
