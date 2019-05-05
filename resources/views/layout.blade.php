@@ -17,7 +17,10 @@
         
         <title>Music Shop</title>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+        <!-- home, browse and cart page -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <!-- Login, Register and change password page -->
+        <link href="{{ asset('css/form.css') }}" rel="stylesheet">
         <style>
 
       </style>
