@@ -173,7 +173,7 @@ class CartController extends Controller
     {
         //
         
-        if($number < 100 && $number > 1 && Auth::check()){
+        if($number < 100 && $number > 0 && Auth::check()){
             Cart::where('user_id', auth()->id())->where('album_id', $album_id)->update(['number' => $number]);
         }
     }
