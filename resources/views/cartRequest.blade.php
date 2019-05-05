@@ -6,13 +6,16 @@ function limit(element){
     if(element.value.length > maxlen){
         element.value = element.value.substr(0, maxlen);
     }
-
 }
 
 
 
 function updateCart(element,  id)
 {
+    if(isNaN(element.value) || element.value < 1){
+        element.value = 1;
+    }
+
      // send patch reuqest to update cart
      if(window.XMLHttpRequest) {
     // for IE7+, firefox, chrome, safari
