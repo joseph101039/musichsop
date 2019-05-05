@@ -6,7 +6,7 @@
 <h1 class="title">Music Shop</h1>
 <div class="box">
     <div class="best-sale">
-        <div class="box">
+        <div class="box-header box">
             <h2 class="title"> 精選熱賣專輯 </h2>
         </div>
 

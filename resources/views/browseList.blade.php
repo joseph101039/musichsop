@@ -3,7 +3,6 @@
     @foreach($albumList as $album)
         <div class="prodouctBox">
             <div class = "productImg">
-                <span class=helper></span>
                 <img src="{{ asset('images/'.$album->coverimg_file) }}" class="browse-img">
             </div>
             <div class="productName"  style="color:#71b412"><b>{{ $album['album_name'] }}</b></div>

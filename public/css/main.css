@@ -90,12 +90,16 @@ ul.navbar {
 
   .profile{
     margin: 15px;
-    font-size: 18px;
+    font-size: 15px;
     color: black;
-    font-weight:bold;
+    margin-bottom:2em;
+    font-weight:550;
   }
   .link-profile{
     background-color:slategrey;
+    margin: 0px;
+    max-width: 170px;
+    border-radius: .45rem;
   }
 
   .browse-img{
@@ -118,9 +122,11 @@ ul.navbar {
 
   .prodouctBox{
       width:320px;
-      border:1px solid gray;
+      border:1px solid rgb(218, 218, 218);
+      border-radius: .45rem;
       background-color: #f2f2f2;
       margin: 5px;
+      padding: 10px;
       justify-content: center;
       text-align: center;
   }
@@ -142,6 +148,8 @@ ul.navbar {
 
   .productImg img{
       vertical-align: middle;
+      margin-left: auto;
+      margin-right: auto;
   }
 
   .filter{
