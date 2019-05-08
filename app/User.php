@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function carts()
     {
-        return $this->hasMany(Cart::class, 'user_id')->get();
+        return $this->hasMany(Cart::class, 'user_id');
     }
 
     public function isAdmin()

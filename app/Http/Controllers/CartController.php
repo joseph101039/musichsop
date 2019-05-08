@@ -129,7 +129,7 @@ class CartController extends Controller
                 $_instance->store(strval($item));
             }
 
-            $carts = auth()->user()->carts();
+            $carts = auth()->user()->carts()->get();
             foreach($carts as $cart){
                 if(!in_array($cart['album_id'], $items)){
                     session()->push('cart', $cart['album_id']);
@@ -186,8 +186,10 @@ class CartController extends Controller
      */
     public function destroy($album_id)
     {
-        //
-        if(Cart::where('user_id', auth()->id())->where('album_id', $album_id)->delete()){
+        //Joseph-190508 >>>
+        //if(Cart::where('user_id', auth()->id())->where('album_id', $album_id)->delete()){
+        if(auth()->user()->carts()->where('album_id', $album_id)->delete()){
+        //Joseph-190508 <<<
             if(session()->has('cart'))
             {
                 $items = session()->get('cart');
@@ -211,7 +213,16 @@ class CartController extends Controller
 
     public function checkout()
     {
-        if(Cart::where('user_id', auth()->id())->delete()){
+		//if nothing found in the cart
+        if(session()->has('cart') && count(session()->get('cart')) == 0){
+            return 'none';
+        }
+
+
+        //Joseph-190508 >>>
+        //if(Cart::where('user_id', auth()->id())->delete()){
+        if(auth()->user()->carts()->delete()){
+        //Joseph-190508 <<<
             if(session()->has('cart'))
             {
                 session(['cart' => []]);
