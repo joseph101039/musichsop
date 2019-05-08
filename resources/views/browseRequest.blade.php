@@ -50,6 +50,11 @@
         xmlhttp.send();
     }
 
-
+    function disableAddButton(id)
+    {
+        var obj = document.getElementById("AddBtn" + id);
+        obj.disabled = true;
+        obj.innerHTML = "Added";
+    }
 
 </script>

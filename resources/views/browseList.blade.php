@@ -1,3 +1,9 @@
+<?php  
+    $cartids = [];
+    if(session()->has('cart')){
+        $cartids = session()->get('cart');
+    }
+?>
 
 <div class="flex-container">
     @foreach($albumList as $album)
@@ -9,7 +15,9 @@
             <div class="productSinger" style="color:#71b412"><b>{{ $album['singer'] }}</b></div>
             <div class="ProductRelease"><p>Release: {{ $album['release'] }}</p></div>
             <div class="productPrice"><p>$ {{ $album['price'] }}</p></div>
-            <input type ="button" onclick="addToCart({{ $album['id'] }})" value="Add to Cart">
+            <button type ="button" id=AddBtn{{$album['id']}} onclick="addToCart({{ $album['id'] }}); disableAddButton({{$album['id']}});" 
+                {{in_array($album['id'], $cartids)?' disabled':''}}>
+                {{in_array($album['id'], $cartids)?'Added':'Add to Cart'}}</button>
         </div>
     @endforeach
 
