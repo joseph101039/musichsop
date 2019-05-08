@@ -97,7 +97,7 @@ function checkout()
     }
 
 
-    xmlhttp.open("GET", "/checkout/" , true);
+    xmlhttp.open("GET", "/checkout" , true);
     xmlhttp.send();
 }
 </script>
