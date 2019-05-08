@@ -12,17 +12,17 @@ use App\Http\Controllers\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/* 
 Route::get('/', function () {
     return view('welcome');
 });
-
+ */
 Route::resource('album', 'AlbumController');
 Route::resource('cart', 'CartController');
 Route::get('/cart/{album_id}/{number}', 'CartController@update');
 Route::get('/addToCart/{album_id}', 'CartController@store');
 Route::get('/deleFromCart/{album_id}', 'CartController@destroy');
-Route::get('/checkout', 'CartController@checkout');
+Route::get('/checkout', 'CartController@checkout')->name('checkout');
 Route::get('/', 'AlbumController@home');    //## workaround ##
 
 //Auth::routes();

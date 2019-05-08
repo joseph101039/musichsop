@@ -47,7 +47,10 @@
         <h2> You have not added any items to cart.</h2>
     @else
     <div id="check-sum">
-        <h3><span>Total price: $</span><span id="price-sum">{{ $cartList['price_sum'] }}</span></h3>
+        <h3>
+            <span>Total price: $</span>
+            <span id="price-sum">{{ $cartList['price_sum'] }}</span>
+        </h3>
         <button type ="button" name="checkout" value="checkout"  onclick="checkout();">Checkout</button>
     </div>
     @endif

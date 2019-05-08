@@ -83,9 +83,12 @@ function checkout()
 
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // If a item is deleted, fresh the page. Otherwise, alert users.
+            // If all items are deleted, fresh the page. Otherwise, alert users.
             if(this.responseText ==='true'){
                 window.location.href=window.location.href;
+            }
+            else if(this.responseText ==='none'){
+                alert("Nothing added into cart!");
             }
             else{
                 alert("Server connection error! Cannot checkout currently!");
