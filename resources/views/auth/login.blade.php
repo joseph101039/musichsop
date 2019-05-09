@@ -1,5 +1,5 @@
 @extends('layout')
-
+@include('menu')
 @section('content')
 
     <div class="row justify-content-center">

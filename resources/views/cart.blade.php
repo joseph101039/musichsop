@@ -1,5 +1,5 @@
 @extends('layout')
-
+@include('menu')
 @section('content')
 @include('cartRequest')
 <div class='cart-container'>
@@ -18,7 +18,10 @@
         @foreach($cartList as $key=>$album)
             @if($key !== "price_sum")
                 <tr class="cart-album">
-                    <td> {{ $key + 1}} </td>
+                    <td>
+                        {{ $key + 1}} 
+                        <!--<input type="checkbox" name="box{{$album['id'] }}">-->
+                    </td>
                     <td>
                         <span class="helper"></span>
                         <img src="{{ asset('images/'.$album['coverimg_file']) }}" class="cart-img">
@@ -32,7 +35,7 @@
                             onkeyup="limit(this);"/>
                     </td>
                     <td>
-                        <button type="button" value="Delete" id="cart-del" onclick="deleteCart({{$album['id'] }}); ">Delete</button>
+                        <button type="button" value="Delete" class="cart-del" onclick="deleteCart({{$album['id'] }}); ">Delete</button>
                     </td>
 
                 </tr>
@@ -51,7 +54,7 @@
             <span>Total price: $</span>
             <span id="price-sum">{{ $cartList['price_sum'] }}</span>
         </h3>
-        <button type ="button" name="checkout" value="checkout"  onclick="checkout();">Checkout</button>
+        <button type ="button" name="checkout" value="checkout"  onclick="checkout();" {{count($cartList)==1?'disabled':''}}>Checkout</button>
     </div>
     @endif
 </div>

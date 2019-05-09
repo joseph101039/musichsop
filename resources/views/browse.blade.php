@@ -1,4 +1,5 @@
 @extends('layout')
+@include('menu')
 @section('content')
 
 @include('browseRequest')

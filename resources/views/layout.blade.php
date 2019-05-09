@@ -22,25 +22,13 @@
         <!-- Login, Register and change password page -->
         <link href="{{ asset('css/form.css') }}" rel="stylesheet">
         <style>
-            .container{
-                padding-top: 1.5rem!important;
-            }
 
-            .box{
-                background-color: rgba(0, 0, 0, .03);
-            }
-
-            
-            .box-header {
-                background-color: rgba(0, 61, 102, .07);
-                text-align: center;
-            }
 
       </style>
       <?php if(!session()->has('cart')){ session(['cart'=>[]]);}?>
     </head>
     <body>
-         @include('menu')
+        
         <div class="container">
             @yield('content')
         </div>

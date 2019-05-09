@@ -1,7 +1,7 @@
 
 
 @extends('layout')
-
+@include('menu')
 @section('content')
 <h1 class="title">Music Shop</h1>
 <div class="box">
