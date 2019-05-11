@@ -13,4 +13,9 @@ class Album extends Model
 
     protected $table = 'albums';
 
+    public function order_products()
+    {
+        return $this->hasMany(OrderProduct::class, 'album_id');
+    }
+
 }
