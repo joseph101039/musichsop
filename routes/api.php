@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('notify', 'EzPayController@notifyUrl')->name('ezpay.notify');
+
+Route::post('return', 'EzPayController@returnUrl')->name('ezpay.return');
+
+Route::post('customer', 'EzPayController@customUrl')->name('ezpay.customer');
+

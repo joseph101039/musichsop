@@ -550,3 +550,12 @@
     margin-bottom: 0!important
   }
   
+  .buyerAddr{
+    display: flex;
+    padding: 5px;
+  }
+
+  /* Avoid select element inside padding due to the inherit attribute */
+  .buyerAddr select{
+    padding: 0px;
+  }

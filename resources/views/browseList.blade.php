@@ -15,7 +15,7 @@
             <div class="productSinger" style="color:#71b412"><b>{{ $album['singer'] }}</b></div>
             <div class="ProductRelease"><p>Release: {{ $album['release'] }}</p></div>
             <div class="productPrice"><p>$ {{ $album['price'] }}</p></div>
-            <button type ="button" id=AddBtn{{$album['id']}} onclick="addToCart({{ $album['id'] }}); disableAddButton({{$album['id']}});" 
+            <button type ="button" id="AddBtn{{$album['id']}}" onclick="addToCart({{ $album['id'] }}); disableAddButton({{$album['id']}});" 
                 {{in_array($album['id'], $cartids)?' disabled':''}}>
                 {{in_array($album['id'], $cartids)?'Added':'Add to Cart'}}</button>
         </div>

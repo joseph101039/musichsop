@@ -24,35 +24,7 @@ class CartController extends Controller
         //
         if(auth()->check())
         {        
-            $items = Cart::select('album_id', 'number')->where('user_id', auth()->id())->orderBy('created_at', 'asc')->get();
-            $price_sum = 0;
-
-            if(count($items) > 0){
-                $number = array();
-                $album_id = array();
-                // Gets a list of all the 2nd-level keys in the array
-                foreach($items as $item){
-                    $album_id[] = $item['album_id'];
-                    $number[] = $item['number'];   
-                }
-
-                $albumidStr = implode(',', $album_id);
-
-                $cartList = Album::select('id', 'coverimg_file', 'album_name', 'singer', 'release', 'price')->
-                whereIn('id', $album_id)->
-                orderByRaw(\DB::raw("FIELD(id, $albumidStr)"))->get();
-
-                $count = count($cartList);
-                for($i = 0; $i < $count; $i++){
-                    $cartList[$i]['number'] = $number[$i];
-                    $price_sum +=  (float)$cartList[$i]['price'] * (float)$cartList[$i]['number'];
-                }
-            }
-            else{
-                $cartList = array();
-                
-            }
-            $cartList['price_sum'] = $price_sum;
+            $cartList = $this->getCartList();
             return view('cart', compact('cartList'));
         }
         else//guest
@@ -60,6 +32,41 @@ class CartController extends Controller
             return redirect('/login');
         }
 
+    }
+
+    public function getCartList()
+    {
+        $items = Cart::select('album_id', 'number')->where('user_id', auth()->id())->orderBy('created_at', 'asc')->get();
+        $price_sum = 0;
+
+        if(count($items) > 0){
+            $number = array();
+            $album_id = array();
+            // Gets a list of all the 2nd-level keys in the array
+            foreach($items as $item){
+                $album_id[] = $item['album_id'];
+                $number[] = $item['number'];   
+            }
+
+            $albumidStr = implode(',', $album_id);
+
+            $cartList = Album::select('id', 'coverimg_file', 'album_name', 'singer', 'release', 'price')->
+            whereIn('id', $album_id)->
+            orderByRaw(\DB::raw("FIELD(id, $albumidStr)"))->get();
+
+            $count = count($cartList);
+            for($i = 0; $i < $count; $i++){
+                $cartList[$i]['number'] = $number[$i];
+                $price_sum +=  (float)$cartList[$i]['price'] * (float)$cartList[$i]['number'];
+            }
+        }
+        else{
+            $cartList = array();
+            
+        }
+        $cartList['price_sum'] = $price_sum;
+
+        return $cartList;
     }
 
     /**
@@ -221,12 +228,13 @@ class CartController extends Controller
 
         //Joseph-190508 >>>
         //if(Cart::where('user_id', auth()->id())->delete()){
-        if(auth()->user()->carts()->delete()){
-        //Joseph-190508 <<<
-            if(session()->has('cart'))
+        //if(auth()->user()->carts()->delete()){
+        if(true){    //tmp
+        //Joseph-190508 <<<  
+            /* if(session()->has('cart'))
             {
                 session(['cart' => []]);
-            }
+            } */
             return 'true';
         }
         else{

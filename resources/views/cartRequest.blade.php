@@ -85,7 +85,9 @@ function checkout()
         if (this.readyState == 4 && this.status == 200) {
             // If all items are deleted, fresh the page. Otherwise, alert users.
             if(this.responseText ==='true'){
-                window.location.href=window.location.href;
+                /* window.location.href=window.location.href; */
+                // get to order info page
+                window.location.href="{{route('order.index')}}";
             }
             else if(this.responseText ==='none'){
                 alert("Nothing added into cart!");

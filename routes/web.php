@@ -49,3 +49,8 @@ Route::get('/admin', 'HomeController@admin')->middleware('admin');
 Route::get('/changePassword','UpdatePasswordController@showChangePasswordForm');
 Route::post('/changePassword','UpdatePasswordController@changePassword')->name('changePassword');
 
+
+# Order 
+Route::resource('order', 'OrderController');
+Route::post('order_info', 'OrderController@index');
+

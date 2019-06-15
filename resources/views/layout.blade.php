@@ -25,7 +25,7 @@
 
 
       </style>
-      <?php if(!session()->has('cart')){ session(['cart'=>[]]);}?>
+      
     </head>
     <body>
         

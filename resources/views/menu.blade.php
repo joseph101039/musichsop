@@ -1,3 +1,4 @@
+<?php if(!session()->has('cart')){ session(['cart'=>[]]);} ?>
 <div class="nav-bar">
     <nav>
         <ul class="navbar">
